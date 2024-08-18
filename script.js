@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.innerHTML = `
                 <input type="checkbox" ${todo.completed ? 'checked' : ''}>
                 <span class="todo-text">${todo.text}</span>
+                <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
             `;
 
@@ -27,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderTodos();
             });
 
+            const editBtn = li.querySelector('.edit-btn');
+            editBtn.addEventListener('click', () => {
+                enterEditMode(li, todo, index);
+            });
+
             const deleteBtn = li.querySelector('.delete-btn');
             deleteBtn.addEventListener('click', () => {
                 todos.splice(index, 1);
@@ -35,6 +41,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             todoList.appendChild(li);
+        });
+    }
+
+    function enterEditMode(li, todo, index) {
+        li.innerHTML = `
+            <input type="text" class="edit-input" value="${todo.text}">
+            <button class="save-btn">Save</button>
+            <button class="delete-btn">Delete</button>
+        `;
+
+        const editInput = li.querySelector('.edit-input');
+        const saveBtn = li.querySelector('.save-btn');
+        const deleteBtn = li.querySelector('.delete-btn');
+
+        editInput.focus();
+
+        saveBtn.addEventListener('click', () => {
+            const newText = editInput.value.trim();
+            if (newText) {
+                todos[index].text = newText;
+                saveTodos();
+                renderTodos();
+            }
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            todos.splice(index, 1);
+            saveTodos();
+            renderTodos();
         });
     }
 

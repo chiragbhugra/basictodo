@@ -98,3 +98,41 @@ h1 {
 .todo-item .delete-btn:hover {
     background-color: #d32f2f;
 }
+
+.todo-item .edit-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 0.5rem;
+}
+
+.todo-item .edit-btn:hover {
+    background-color: #1976D2;
+}
+
+.todo-item .edit-input {
+    flex-grow: 1;
+    padding: 0.25rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+
+.todo-item .save-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.todo-item .save-btn:hover {
+    background-color: #45a049;
+}
